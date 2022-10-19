@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[143]:
+# In[5]:
 
 
 import numpy as np
@@ -32,12 +32,20 @@ def PIDController(v_0, theta_ref, theta_hat, prev_e, prev_int, delta_t):
     
     # TODO: these are random values, you have to implement your own PID controller in here
     e_curr = theta_ref - theta_hat
-    kp = 0.7
-    kd = 0.35
-    ki = 0.005
-    omega = kp * e_curr + ki * (prev_int+ e_curr * delta_t) + kd * (e_curr - prev_e)/delta_t 
-    e = e_curr
+    kp = 5#0.7
+    kd = .1 #0.35
+    ki = .2 #0.005
+    
     e_int = prev_int+ e_curr * delta_t 
+    
+    #anti-windup - preventing the integral error from growing too much
+    e_int = max(min(e_int,2),-2)
+    
+    e_der = (e_curr - prev_e)/delta_t
+    
+    omega = kp * e_curr + ki * e_int + kd * e_der 
+    e = e_curr
+    
     
     return [v_0, omega], e, e_int
 
