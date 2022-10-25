@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[15]:
+# In[18]:
 
 
 import numpy as np
@@ -37,7 +37,7 @@ def PIDController(
     # TODO: these are random values, you have to implement your own PID controller in here
     e_curr = y_ref - y_hat
     kp = 4 #10#0.005#0.3
-    kd = 120#15#10.5
+    kd = 15#15#10.5
     ki = 0.01#0.004
     
     e_der = (e_curr - prev_e_y)/delta_t    
