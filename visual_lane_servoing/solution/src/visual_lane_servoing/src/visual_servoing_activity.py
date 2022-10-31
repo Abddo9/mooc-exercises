@@ -29,7 +29,7 @@ def get_steer_matrix_left_lane_markings(shape):
     #for j in range(int(shape[1]*2/3)):
      #   steer_matrix_left_lane[:,shape[1]-1-j] =   -  0.2 * 10**134/np.exp(j) #- 0.000001/np.exp(j/100)
     
-    steer_matrix_left_lane[:,int(shape[1]*1/3):] = -2.9
+    steer_matrix_left_lane[:,int(shape[1]*1/3):] = -0.01 # best values sim -3,-2.9
                            
     return steer_matrix_left_lane
 
@@ -59,7 +59,7 @@ def get_steer_matrix_right_lane_markings(shape):
     #for j in range(int(shape[1]*2/3)):
         #steer_matrix_right_lane[:,j] = 0.9 * 10**134/np.exp(j) #0.000001/np.exp(j/100) #10**134/np.exp(j)
     
-    steer_matrix_right_lane[:,:int(shape[1]*2/3)] = 2.9  #best value 3
+    steer_matrix_right_lane[:,:int(shape[1]*2/3)] = 0.01  #best values sim 3, 2.9
     
     return steer_matrix_right_lane
 
