@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[127]:
+# In[34]:
 
 
 # The function written in this cell will actually be ran on your robot (sim or real). 
@@ -22,17 +22,19 @@ def get_steer_matrix_left_lane_markings(shape):
     """
     
     steer_matrix_left_lane = np.zeros(shape)
-    for j in range(int(shape[1]*2/3)):
-        for i in range(60,shape[0]):
-            steer_matrix_left_lane[shape[0]-1-i,shape[1]-1-j] = -0.000001/np.exp(j/100) 
     #for j in range(int(shape[1]*2/3)):
-        #steer_matrix_left_lane[:,shape[1]-1-j] = - 0.000001/np.exp(j/100) #10**134/np.exp(j)
+     #   for i in range(60,shape[0]):
+      #      steer_matrix_left_lane[shape[0]-1-i,shape[1]-1-j] = -0.000001/np.exp(j/100) 
     #steer_matrix_left_lane[:,int(shape[1]/4):shape[1]-1] = -.001
-
+    #for j in range(int(shape[1]*2/3)):
+     #   steer_matrix_left_lane[:,shape[1]-1-j] =   -  0.2 * 10**134/np.exp(j) #- 0.000001/np.exp(j/100)
+    
+    steer_matrix_left_lane[:,int(shape[1]*1/3):] = -2.9
+                           
     return steer_matrix_left_lane
 
 
-# In[130]:
+# In[35]:
 
 
 # The function written in this cell will actually be ran on your robot (sim or real). 
@@ -50,17 +52,19 @@ def get_steer_matrix_right_lane_markings(shape):
     """
     
     steer_matrix_right_lane = np.zeros(shape)
-    for j in range(int(shape[1]*2/3)):
-        for i in range(60,shape[0]):
-            steer_matrix_right_lane[shape[0]-1-i,j] = 0.0000001/np.exp(j/100) 
     #for j in range(int(shape[1]*2/3)):
-        #steer_matrix_right_lane[:,j] = 0.000001/np.exp(j/100) #10**134/np.exp(j)
+     #   for i in range(60,shape[0]):
+      #      steer_matrix_right_lane[shape[0]-1-i,j] = 0.000001/np.exp(j/100) 
     #steer_matrix_right_lane[:,0:int(shape[1]*3/4)+1] = 0.001
-
+    #for j in range(int(shape[1]*2/3)):
+        #steer_matrix_right_lane[:,j] = 0.9 * 10**134/np.exp(j) #0.000001/np.exp(j/100) #10**134/np.exp(j)
+    
+    steer_matrix_right_lane[:,:int(shape[1]*2/3)] = 2.9  #best value 3
+    
     return steer_matrix_right_lane
 
 
-# In[124]:
+# In[31]:
 
 
 # The function written in this cell will actually be ran on your robot (sim or real). 
